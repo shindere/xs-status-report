@@ -382,7 +382,6 @@ def collect_system_logs(bugtool, mocker, base_path, tmp_path, log_names):
     return [name[len(archived_dir) :] for name in names if name.startswith(archived_dir)]
 
 
-@pytest.mark.xfail(reason="Only the rotations 1 to 19 of the logs are collected")
 def test_main_collects_log_rotations_beyond_19(patched_bugtool, mocker):
     """Assert that main() collects all the rotations of a log, beyond the 19th"""
 
@@ -393,7 +392,6 @@ def test_main_collects_log_rotations_beyond_19(patched_bugtool, mocker):
     assert sorted(archived) == sorted(log_names)
 
 
-@pytest.mark.xfail(reason="Only the compressed rotations of wtmp are collected")
 def test_main_collects_uncompressed_wtmp_rotation(patched_bugtool, mocker):
     """Assert that main() collects the uncompressed rotation of wtmp"""
 
